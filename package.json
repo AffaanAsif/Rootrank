@@ -1,0 +1,1 @@
+{"name": "rootrank", "version": "2.0.0", "private": true, "scripts": {"dev": "node dev.js", "test": "node tests/levels.js && node tests/run.js"}, "engines": {"node": ">=18"}, "dependencies": {"redis": "^4.7.0"}}

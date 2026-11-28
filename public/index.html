@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Rootrank: learn to hack, then prove it</title>
+<meta name="description" content="Learn ethical hacking with guided courses, then climb a ranked ladder of 1,100 levels in a real browser terminal, and take on the hardest attacks in hacking history.">
+<meta name="theme-color" content="#0d2b4a">
+<meta property="og:type" content="website"><meta property="og:title" content="Rootrank: learn to hack, then prove it"><meta property="og:description" content="1,100 levels in a real browser terminal, a ladder from Guest to Ghost, and the hardest attacks in hacking history. Free.">
+<meta property="og:image" content="/og.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Rootrank: learn to hack, then prove it"><meta name="twitter:description" content="Learn hacking by doing it. Then take on the hardest problems in its history."><meta name="twitter:image" content="/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2310192b'/%3E%3Cpath d='M9 11l6 5-6 5' fill='none' stroke='%23fff' stroke-width='2.6'/%3E%3Cpath d='M17 22h7' stroke='%23e63946' stroke-width='2.6'/%3E%3C/svg%3E">
+<link rel="preload" href="/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<a class="skip" href="#app" onclick="document.getElementById('app').focus();return false">Skip to content</a>
+<div id="prog"></div>
+<header class="top" id="top">
+  <div class="in">
+    <a class="logo" href="#/" id="logo" aria-label="Rootrank home"><svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#10192b"/><path d="M9 11l6 5-6 5" fill="none" stroke="#fff" stroke-width="2.6"/><path d="M17 22h7" stroke="#e63946" stroke-width="2.6"/></svg><span>rootrank</span></a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#/learn" data-nav="learn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4zM7 10v5c0 1.5 2.2 3 5 3s5-1.500 5-3v-5"/></svg>Learn</a>
+      <a href="#/compete" data-nav="compete"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0V4z"/></svg>Compete</a>
+      <a href="#/legends" data-nav="legends"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.200 9.500l6.100-.9z"/></svg>Legends</a>
+      <a href="#/community" data-nav="community"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.500"/><path d="M2.500 20c0-3.500 3-6 6.500-6s6.500 2.500 6.500 6M17 5a3.500 3.500 0 010 7M18 14c2.500.5 3.500 3 3.500 6"/></svg>Community</a>
+      <a href="#/board" data-nav="board"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>Board</a>
+    </nav>
+    <div class="hright"><button class="srch" id="srch" type="button" aria-label="Search"><span>Course, level or command</span><kbd>Ctrl K</kbd></button><span id="me"></span></div>
+  </div>
+</header>
+<main id="app" tabindex="-1"></main>
+<footer class="foot">
+  <div class="in">
+    <span>Everything here is a simulation. No real systems are touched.</span>
+    <a href="https://affaanasif.vercel.app">Built by Muhammad Affaan Asif</a>
+  </div>
+</footer>
+<span id="sig" data-s="" style="display:none" aria-hidden="true"></span>
+<canvas id="rain" hidden></canvas>
+
+<div class="modal" id="modal" hidden>
+  <form class="mbox" id="authform" autocomplete="on">
+    <span class="kick">Get your ticket</span><h3 id="mtitle">Sign in</h3>
+    <p class="muted" style="font-size:15px">Your progress and rank are saved to your account.</p>
+    <div id="gwrap"><div id="gbtn"></div><button type="button" class="sbtn" id="ghbtn"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>Continue with GitHub</button><div class="or">or</div></div>
+    <label for="au">Username</label><input class="field" id="au" name="username" autocomplete="username" autocapitalize="off" spellcheck="false" maxlength="20">
+    <label for="ap">Password</label><input class="field" id="ap" name="password" type="password" autocomplete="current-password" maxlength="100">
+    <div class="err" id="aerr"></div>
+    <div class="row"><button class="btn" id="asubmit" type="submit">Sign in</button><button class="btn ghost" type="button" id="aclose">Cancel</button></div>
+    <div class="sw" id="aswitch"></div>
+  </form>
+</div>
+<div class="pal" id="pal" hidden><div class="palbox" role="dialog" aria-label="Search"><input id="pin" placeholder="Where to? Course, level or command" autocomplete="off" spellcheck="false"><div class="pall" id="pall"></div><div class="palf"><span>↑↓ move</span><span>Enter open</span><span>Esc close</span></div></div></div>
+<div class="toasts" id="toasts"></div>
+<script src="/config.js"></script>
+<script src="/md.js"></script>
+<script src="/learn-a.js"></script>
+<script src="/learn-b.js"></script>
+<script src="/learn-c.js"></script>
+<script src="/learn-d.js"></script>
+<script src="/learn-e.js"></script>
+<script src="/videos.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
